@@ -1,0 +1,387 @@
+import java.io all util library
+import java.text formatting library 
+import java.util library 
+
+
+Main Module: main method
+Import: none
+Export:none
+Algorithm:
+
+Declare the Scanner object of Scannner class
+
+Integer  menuSelection
+String  file:=file path
+
+BufferedReader class in reader:=null
+
+String line:=""
+String delemeter:=""
+
+Declare the List of CovidRecord types object
+covidRecords as a constructor of ArrayList
+
+Declare the List of Country types object
+countries as a constructor of ArrayList
+
+declare the Country object
+
+try{
+
+reader:=new BufferedReader(FileReader object with file path)
+Integer i:=0
+
+while(read input !=null){
+
+String[] data:=line.split(delemeter)
+
+call add method of countries object.
+passing paramater of each field of csv file with creating the constructor.
+
+country:=countries.get(i)
+covidRecords.add(creating constructor with passing the values of filed)
+
+}
+
+call mShowMenu1()
+
+//select the choice item 
+
+OUTPUT "Enter the Selection of Number: "
+
+Input menuSelectionNum
+
+call mExecuteSelection1(menuSelectionNumber, countries, covidRecords)
+
+} catch( Exception object)
+{
+OUTPUT the Exception if any
+
+}
+
+finally{
+try{
+reader.close()
+
+} catch(Exception e)
+{
+OUTPUT the exeception
+}
+}
+
+
+
+
+SubModule: mExecuteSelection
+Import: menuSelecetion(integer) ,countries(List of Country object),covidRecords(List of covidRecords object)
+Export: none
+Algorithm:
+switch(menuSelectionNum){
+
+Case 0: List of covidRecords.
+        allcountries:=uniqCountry(covidRecords)
+         call mAnalysisData(covidRecords,allCountries)
+         Exit
+
+ Case 1:
+        List of allSACountries:=mGetParticularCountries(countries,"SA") 
+        call mAnalysisData(covidRecords,allCountries) 
+        Exit
+Case 2: 
+      List of allNAcountries:=mGetParticularsCountries(country,"NA")
+       call mAnalysisData(covidRecords,allNACountries)
+       Exit
+
+Case 3:
+      List of allAScountries:=mGetParticularsCountries(country,"AS")
+      call mAnalysisData(covidRecords,allAsiaCountries)
+       Exit
+
+Case 4:
+     List of allEucountries:=mGetParticularsCountries(country,"EU")
+       call mAnalysisData(covidRecords,allEuropeCountries)
+       Exit
+Case 5:
+     List of allAFcountries:=mGetParticularsCountries(country,"AF")
+      call mAnalysisData(covidRecords,allAfricaCountries)
+       Exit
+
+
+
+ Case 6:
+        List of allOCcountries:=mGetParticularsCountries(country,"OC")
+       call mAnalysisData(covidRecords,allOceniaCountries)
+       Exit
+    
+
+  Case 7: 
+         Read input
+         String CountryName
+         OUTPUT "Enter the Country Name: " 
+ Case 8: 
+        Read Input 
+        String Date 
+        OUTPUT "Enter the Date: "
+        date:=Read Input
+        call mAnalysisDataForOneDate(covidRecords, Date)   
+        Exit
+ Default: 
+           Exit
+        
+
+}
+
+
+
+SubModule: mAnalysisDataForOneCountry
+Import: covidRecords(List of CovidRecord types), CountryName(String)
+Export: none
+Algorithm:
+
+  List of String types as numberofThiscountry Object
+
+
+ for i:=0 to Size of CovidRecord object(Exclusive) INC BY 1:
+
+   covidRecords covidRecord=covidRecords.get(i)
+   Country country :=covidRecords.country
+   
+    if( country.countryname IS (countryName))
+    Then Add numberOfthisCountry(countryName)
+    end for
+ 
+
+  for i:=0 to size of numberofthisCountry(Exclusive) INC BY 1
+     OUTPUT numberofthisCountry.get(i)
+   end for
+
+   OUTPUT newline
+   Read Input
+   Integer type menu selection
+
+
+   call mShowMenu2()
+   OUTPUT "Enter the Selection Number: "
+    Read input as menuSelection
+    call the method mExecuteSelection2 over passing SelectionNum,covidRecords, and         numberOfthisContinent
+
+
+   Module: mGetParticularCoutnries
+   Import: countries(List of Country),continent(String)
+   Export: List of String
+   Algorithm:
+   
+   Declare List of ValidateCountries:=new ArrayList<>()
+   Countries country
+   for i:=0 to size of countries(Excclusive) INC BY 1:
+       country:=countries.get(i)
+       if(country.getContinent is continent) then
+            if(validateCountries is not contains countryName) then
+                validateCountries.add(country.countryName)
+ 
+     end for
+      for i:=0 to size of validateCountries(Exclusive) INC BY 1:
+          OUTPUT validateCountries.get(i)
+        end for
+       OUTPUT continenet and validateCountries size
+
+       
+
+
+ 
+SubModule:mAnalysisData
+Import: covidRecords(List of covidRecords), particularCountries(List of String)
+Export:none
+Algorithm:
+ Read the input
+ Integer menuSelection
+  call mShowMenu2()
+  OUTPUT "Enter the Selection number: "
+   Read input
+   call mExecuteSelection2(menu2selection,covidRecords,particularsCountries)
+
+
+
+
+SubModule: mExecuteSelection2
+Import:menu2Selection(integer),covidRecord(List of covidRecords),particularCoutnries(List of String)
+Export:none
+Algorithm:
+ switch(menu2Selection)
+   {
+    Case 0:
+       mTotalCumPos(covidRecords,particularCountries)
+      Exit
+    Case 1: 
+      mTotalCumDeceased(covidRecordsm,paritcularCountries)
+      Exit
+    Case 2:
+       mTotalRecover(covidRecords,patricularCountries)
+        Exit
+     Case 3:
+          mAverageDailyPosCase(CovidRecord,particularCountries)
+          Exit
+     Case 4:
+          mPercentageOfRecover(covidRecords,particularCountries)
+          Exit
+      Case 5:
+           mPercentageOfDecease(covidRecords,particularCountries)
+           Exit
+       Case 6: 
+           mAllStatistics(covidRecords,particularCountries)
+           Exit
+       Default:
+           Exit
+   
+
+    }
+ 
+
+
+
+SubModule: mPercentageOfDeceases
+Import: covidRecords(List of covidRecords),particularCountries(List of countries)
+Export: none
+Algorithm:
+ Long totalCumpos:=0;
+ Long totalCumDecease:=0
+ Double Percentage:=0
+
+ for i:=0 to size of covidRecords(Exclusive) inc by 1:
+        CovidRecord covidRecord:=covidRecords.get(i)
+        Country country:=covidRecords.getCountry()
+        if(particularCountries is contains country.getName) then
+              totalCumPost +:= (long)covidRecord.getCumulativePositive()
+              totalCumDecease+:=(long)covidRecords.getCumulativeDecease()
+
+    end for
+  
+   if(totalCumPos is greater than 0) then 
+          percentage:=(totalCumDecease*100)/totalCumPos
+          output newline
+          output percentage
+
+
+
+SubModule:mPercentageOfRecover
+Import: covidRecords(List of CovidRecord),particularCountries(List of String)
+Export:none
+Algorithn:
+ 
+for i:=0 to size of CovidRecords(Exclusive) inc by 1:
+    CovidRecord covidRecord:=covidRecord.get(i)
+   Country country:=covidRecords.getCountry()
+   if(particularCountries is contains country.countryName) then 
+          totalCumpos+:=(long)covidRecords.getCumulativePositive()
+          totalCumRecover+:=(long)covidRecords.getCumulativeRecover()
+
+
+   end for
+ 
+ if(totalCumpos is greater than 0) then 
+          percentage:=totalCumRecove*100/totalCumPos
+          
+  output percentage
+
+
+
+SubModule:mTotalRecover
+Import: covidReocrds(List of CovidRecord), particularCountries(List of Stirng)
+Expor: none
+Algorithm:
+
+ long totalCumDecease:=0
+  for i:=0 to size of covidRecords inc by 1:
+     if(particularCountries is contains countryname) then 
+            totalCumRecover+:=(long)covidRecords.CumulativeRecoverd
+   end for
+
+  output totalRecover
+
+
+
+
+
+SubModule: mTotalDecease
+Import: covidRecords(List of covidRecords),particularCountries(List of String)
+Expor:none
+Algorithms:
+ for i:=0 to size of covidRecords inc by 1:
+     if(particularCountries is contains countryName) then
+       totalCumDecease+:=(Long) covidRecord.cumulaticeDeceased;
+ end for
+
+output totalCumDecease
+
+
+
+
+
+
+SubModule: mTotalCumPos
+Import: covidRecords(list of covidRecord), particularCountries(list of string)
+Export: none
+Algorithm:
+ for i:=0 to size of covidRecords inc by 1:
+      if(particularcountries is contain countryName)
+        then totalcumPost+:=(long)covidReocrd.cumPos
+
+    end for
+
+ output totalcumpos
+
+
+
+SubModule: mShowmenu1
+Imprt:none
+Export:none
+Algorithms:
+ for i:=-0 to size of menuItems inc by 1:
+    output menuItem
+ end for
+
+
+
+
+SubModule:mShowmenu2
+Import: none
+Export: none
+Algorithm:
+  for i:=0 to size of menuItems inc by 1:
+      output menuItems
+
+    end for
+
+
+
+
+SubModule:uniqCountry
+Import: covidRecords(list of covidRecords)
+Export:none
+Algorithm:
+ for i:=1 t0 size of covidRecords inc 1:
+     if (list1 is not contains countryName) then  
+          list.add(coutryName)
+
+    end for
+
+
+
+   
+  
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+

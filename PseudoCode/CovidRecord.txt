@@ -1,0 +1,30 @@
+import java.util library 
+
+
+Module: CovidRecord
+
+  tring date
+String cumlativePositive
+String cumulativeDeceased
+String cumulativeRecover
+String CurrentlyPositive
+
+String hospitalized
+Stirng IntensiveCare
+Country Country
+
+
+Declare constructor of class by passing those parameter
+set those parameter
+
+
+declare String type getDate method
+Declare String type getCumlativePositive method
+declare String type getCumulativeRecover method
+Declare String type getCurrentlyPositive  method
+
+declare String type getCumulativeDeceased method
+
+declare String type getCountry method
+
+declare String type  uniqdate method

@@ -1,0 +1,70 @@
+import java.util library
+
+
+Module: Country
+
+String iso3
+String continent
+String CountryName
+Stirng nuts
+String lat
+String longg
+
+
+Create a constructor of class by passing those parameter
+set those parameter of constructor
+
+
+
+declare String type getContinent method
+declar String type getCountryName method
+declare String type getIso method
+declare String type getlat method 
+declare String type getLongg
+declare String type getNutss method
+
+
+SubModule: uniqIso3
+Import: Iso3(string)
+Export:none
+ Algorithms:
+   for each string of list:
+       add string of list
+    end for
+ for each String of list:
+   output Str1
+
+   end for
+
+
+
+Submodule: uniqContinent
+import: continent (String)
+Export:none
+Algorithms:
+  for each String of list:
+     if(list is not contains str1) then 
+         add str1 into the list
+   end for 
+
+
+
+
+
+SubModule: uniqNuts
+Import: nuts (String )
+Export: none
+Algorithms:
+ for each String of list:
+   if(list is not contains str1) then 
+        add str1 into the list
+   end for
+
+
+
+
+
+
+
+
+ 
